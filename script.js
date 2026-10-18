@@ -452,3 +452,55 @@ window.addEventListener('DOMContentLoaded', () => {
   renderWeaponsGrid();
   init3DViewer();
 });
+const suitsData = [
+  {
+    id: 'classic',
+    name: 'Traje Clásico',
+    category: 'clasico',
+    creator: 'Peter Parker',
+    firstApp: 'Amazing Fantasy #15 (1962)',
+    description: 'El traje tradicional de malla roja y azul con el emblemático patrón de telaraña.',
+    power: 70, tech: 40, stealth: 50, agility: 95,
+    image: 'img/classic-suit.jpg'
+  },
+  {
+    id: 'iron-spider',
+    name: 'Iron Spider',
+    category: 'tech',
+    creator: 'Tony Stark',
+    firstApp: 'The Amazing Spider-Man #529 (2006)',
+    description: 'Equipado con nanotecnología avanzada, patas mecánicas y blindaje táctico.',
+    power: 92, tech: 98, stealth: 40, agility: 88,
+    image: 'img/iron-spider.jpg'
+  },
+  {
+    id: 'symbiote',
+    name: 'Traje Negro / Simbionte',
+    category: 'simbionte',
+    creator: 'Origen Alienígena',
+    firstApp: 'Secret Wars #8 (1984)',
+    description: 'Traje alienígena vivo que potencia drásticamente la fuerza y genera telaraña orgánica.',
+    power: 95, tech: 20, stealth: 85, agility: 90,
+    image: 'img/symbiote-suit.jpg'
+  },
+  {
+    id: 'miles',
+    name: 'Miles Morales Suit',
+    category: 'multiverso',
+    creator: 'Miles Morales',
+    firstApp: 'Ultimate Fallout #4 (2011)',
+    description: 'Traje negro y rojo diseñado para complementar sus habilidades de camuflaje y ráfaga Venom.',
+    power: 82, tech: 60, stealth: 90, agility: 96,
+    image: 'img/miles-morales.jpg'
+  },
+  {
+    id: '2099',
+    name: 'Spider-Man 2099',
+    category: 'multiverso',
+    creator: 'Miguel O\'Hara',
+    firstApp: 'Amazing Spider-Man #365 (1992)',
+    description: 'Fabricado con moléculas inestables, garra retráctil y alas de telaraña para planear.',
+    power: 88, tech: 92, stealth: 60, agility: 94,
+    image: 'img/spider-2099.jpg'
+  }
+];
