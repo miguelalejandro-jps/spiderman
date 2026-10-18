@@ -1,36 +1,46 @@
-/* RESET & VARIABLES BASE (TEMA BLANCO) */
+/* ==========================================================================
+   SPIDER-MAN VAULT - HOJA DE ESTILOS (TEMA CLARO & MÓDULO 3D)
+   ========================================================================== */
+
 :root {
   --primary-red: #e62429;
   --secondary-blue: #0055ff;
-  --bg-main: #ffffff;
-  --bg-card: #f8fafc;
-  --text-dark: #1e293b;
-  --text-muted: #64748b;
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
   --border-color: #e2e8f0;
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  --shadow-hover: 0 12px 20px -3px rgba(230, 36, 41, 0.15);
-  --radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --transition: all 0.25s ease;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 body {
-  background-color: #f1f5f9;
-  color: var(--text-dark);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 /* HEADER */
 .header {
-  background-color: var(--bg-main);
-  text-align: center;
+  background: var(--bg-card);
+  border-bottom: 3px solid var(--primary-red);
   padding: 2.5rem 1rem;
-  border-bottom: 4px solid var(--primary-red);
+  text-align: center;
   box-shadow: var(--shadow-sm);
 }
 
@@ -39,17 +49,17 @@ body {
   align-items: center;
   justify-content: center;
   gap: 12px;
+  margin-bottom: 0.5rem;
 }
 
 .logo-icon {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
 }
 
 .header h1 {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--text-dark);
-  letter-spacing: 1px;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--text-primary);
 }
 
 .header h1 span {
@@ -57,46 +67,45 @@ body {
 }
 
 .subtitle {
-  color: var(--text-muted);
-  margin-top: 6px;
+  color: var(--text-secondary);
   font-size: 1.05rem;
 }
 
-/* CONTENEDOR */
+/* CONTAINER */
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 2rem auto;
   padding: 0 1.5rem;
 }
 
 /* CONTROLES Y FILTROS */
 .controls-card {
-  background: var(--bg-main);
-  padding: 1.25rem;
-  border-radius: var(--radius);
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.25rem;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .search-box {
   display: flex;
   align-items: center;
-  background: #f1f5f9;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  flex: 1 1 250px;
+  background: var(--bg-subtle);
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--radius-sm);
+  flex: 1 1 280px;
   border: 1px solid var(--border-color);
 }
 
 .search-box i {
   color: var(--text-muted);
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
 .search-box input {
@@ -105,6 +114,7 @@ body {
   outline: none;
   width: 100%;
   font-size: 0.95rem;
+  color: var(--text-primary);
 }
 
 .filter-buttons {
@@ -114,79 +124,85 @@ body {
 }
 
 .filter-btn {
-  background: #f1f5f9;
+  background: var(--bg-subtle);
   border: 1px solid var(--border-color);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  padding: 0.55rem 1.2rem;
+  border-radius: 30px;
   cursor: pointer;
   font-weight: 600;
-  color: var(--text-dark);
-  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  transition: var(--transition);
 }
 
 .filter-btn:hover, .filter-btn.active {
   background: var(--primary-red);
-  color: white;
+  color: #ffffff;
   border-color: var(--primary-red);
 }
 
 .sort-box {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 0.9rem;
-  color: var(--text-muted);
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 .sort-box select {
-  padding: 0.5rem;
-  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
-  outline: none;
-  background: var(--bg-main);
+  background: var(--bg-card);
+  font-weight: 600;
   cursor: pointer;
 }
 
-/* GALERÍA / CARDS */
+/* GALERÍA DE TRAJES */
 .suits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 .suit-card {
-  background: var(--bg-main);
-  border-radius: var(--radius);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
+  transition: var(--transition);
   display: flex;
   flex-direction: column;
 }
 
 .suit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-  border-color: rgba(230, 36, 41, 0.4);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-red);
 }
 
 .card-img-container {
-  height: 200px;
-  background: #f8fafc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid var(--border-color);
+  height: 220px;
+  background: #f1f5f9;
+  overflow: hidden;
 }
 
-.card-img-container svg {
-  width: 130px;
-  height: 130px;
+.card-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.suit-card:hover .card-img-container img {
+  transform: scale(1.05);
 }
 
 .card-content {
-  padding: 1.2rem;
+  padding: 1.4rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -196,206 +212,54 @@ body {
   display: inline-block;
   align-self: flex-start;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(0, 85, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(0, 85, 255, 0.08);
   color: var(--secondary-blue);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0, 85, 255, 0.2);
 }
 
 .suit-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 6px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .suit-card p {
   font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
   flex-grow: 1;
 }
 
 .btn-details {
-  background: var(--bg-main);
+  background: #ffffff;
   color: var(--primary-red);
-  border: 1px solid var(--primary-red);
-  padding: 0.6rem;
-  border-radius: 6px;
-  font-weight: 600;
+  border: 2px solid var(--primary-red);
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   width: 100%;
 }
 
 .btn-details:hover {
   background: var(--primary-red);
-  color: white;
+  color: #ffffff;
 }
 
-/* COMPARADOR */
-.compare-section {
-  background: var(--bg-main);
-  margin-top: 3rem;
-  padding: 2rem;
-  border-radius: var(--radius);
+/* SECCIÓN 3D DE ARMAS */
+.weapons-section, .compare-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.section-header h2 {
-  color: var(--text-dark);
-}
-
-.section-header p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-.compare-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.compare-controls select {
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
-  font-weight: 600;
-  width: 220px;
-}
-
-.vs-badge {
-  background: var(--primary-red);
-  color: white;
-  font-weight: 800;
-  padding: 0.4rem 0.8rem;
-  border-radius: 50%;
-  font-size: 0.85rem;
-}
-
-.compare-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  background: #f8fafc;
-  padding: 1.5rem;
-  border-radius: 8px;
-}
-
-.compare-col {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.stat-bar-container {
-  margin-top: 4px;
-}
-
-.stat-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.stat-bar {
-  height: 8px;
-  background: #e2e8f0;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.stat-fill {
-  height: 100%;
-  background: var(--secondary-blue);
-  border-radius: 4px;
-}
-
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal.active {
-  display: flex;
-}
-
-.modal-content {
-  background: var(--bg-main);
-  width: 90%;
-  max-width: 600px;
-  border-radius: var(--radius);
-  padding: 2rem;
-  position: relative;
-  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
-}
-
-.close-modal {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-muted);
-}
-
-.modal-header-info {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.modal-header-info svg {
-  width: 100px;
-  height: 100px;
-}
-
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 2rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-top: 3rem;
-  border-top: 1px solid var(--border-color);
-  background: var(--bg-main);
-}
-/* ==========================================================================
-   AGREGADO: ESTILOS PARA EL VISUALIZADOR 3D Y SELECTOR DE ARMAS
-   ========================================================================== */
-
-.weapons-section {
-  background: var(--bg-card, #ffffff);
-  border-radius: var(--radius-lg, 18px);
-  border: 1px solid var(--border-color, #e2e8f0);
   padding: 2.5rem 2rem;
-  margin-top: 3rem;
   margin-bottom: 3rem;
-  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0,0,0,0.07));
+  box-shadow: var(--shadow-md);
 }
 
 .section-title {
@@ -406,23 +270,22 @@ body {
 .section-title h2 {
   font-size: 1.8rem;
   font-weight: 800;
-  color: var(--text-primary, #0f172a);
 }
 
 .section-title h2 i {
-  color: var(--primary-red, #e62429);
+  color: var(--primary-red);
   margin-right: 8px;
 }
 
 .viewer-3d-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-  border: 2px solid var(--border-color, #e2e8f0);
-  border-radius: var(--radius-md, 12px);
+  background: #ffffff;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
   overflow: hidden;
   margin-bottom: 2rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-lg);
 }
 
 @media (max-width: 900px) {
@@ -454,7 +317,6 @@ body {
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
-  pointer-events: none;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -466,19 +328,19 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--bg-card, #ffffff);
-  border-left: 1px solid var(--border-color, #e2e8f0);
+  background: var(--bg-card);
+  border-left: 1px solid var(--border-color);
 }
 
 .weapon-info-panel h3 {
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--primary-red, #e62429);
+  color: var(--primary-red);
   margin-bottom: 0.5rem;
 }
 
 .weapon-info-panel p {
-  color: var(--text-secondary, #475569);
+  color: var(--text-secondary);
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
 }
@@ -499,13 +361,13 @@ body {
 
 .boost-badge.power {
   background: #fef2f2;
-  color: var(--primary-red, #e62429);
+  color: var(--primary-red);
   border: 1px solid rgba(230, 36, 41, 0.3);
 }
 
 .boost-badge.tech {
   background: #eff6ff;
-  color: var(--secondary-blue, #0055ff);
+  color: var(--secondary-blue);
   border: 1px solid rgba(0, 85, 255, 0.3);
 }
 
@@ -516,29 +378,29 @@ body {
 }
 
 .weapon-card {
-  background: var(--bg-card, #ffffff);
-  border: 2px solid var(--border-color, #e2e8f0);
-  border-radius: var(--radius-md, 12px);
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
   padding: 1.2rem;
   text-align: center;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: var(--transition);
 }
 
 .weapon-card:hover {
-  border-color: var(--secondary-blue, #0055ff);
+  border-color: var(--secondary-blue);
   transform: translateY(-4px);
 }
 
 .weapon-card.selected {
-  border-color: var(--primary-red, #e62429);
+  border-color: var(--primary-red);
   background: #fff5f5;
-  box-shadow: 0 0 0 2px var(--primary-red, #e62429);
+  box-shadow: 0 0 0 2px var(--primary-red);
 }
 
 .weapon-card i {
   font-size: 2rem;
-  color: var(--primary-red, #e62429);
+  color: var(--primary-red);
   margin-bottom: 8px;
   display: block;
 }
@@ -551,6 +413,131 @@ body {
 
 .weapon-card span {
   font-size: 0.8rem;
-  color: var(--text-muted, #94a3b8);
+  color: var(--text-muted);
   display: block;
+}
+
+/* COMPARADOR */
+.compare-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.compare-controls select {
+  padding: 0.75rem 1.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  font-weight: 700;
+  width: 240px;
+  cursor: pointer;
+}
+
+.vs-badge {
+  background: var(--primary-red);
+  color: #ffffff;
+  font-weight: 900;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  background: var(--bg-subtle);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 768px) {
+  .compare-grid { grid-template-columns: 1fr; }
+}
+
+.compare-col h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--primary-red);
+}
+
+.stat-bar-container {
+  margin-bottom: 0.8rem;
+}
+
+.stat-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.stat-bar {
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.stat-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary-blue) 0%, var(--primary-red) 100%);
+  border-radius: 5px;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal.active { display: flex; }
+
+.modal-content {
+  background: var(--bg-card);
+  width: 100%;
+  max-width: 600px;
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.close-modal {
+  position: absolute;
+  top: 18px; right: 22px;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 2.5rem;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 4rem;
 }
