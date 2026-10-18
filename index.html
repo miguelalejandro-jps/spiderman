@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spider-Man Vault Ultimate Edition Miguel Paspuel | By Miguel Paspuel</title>
+  <title>Miguel Paspuel - Spider-ManVerse Ultimate Vault</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -17,7 +17,7 @@
   <nav class="navbar">
     <div class="nav-brand">
       <i class="fas fa-spider"></i>
-      <span>SPIDER-VERSE VAULT <small>v5.0 Ultimate</small></span>
+      <span>SPIDER-VERSE MULTIVERSE <small>Miguel Paspuel Ed.</small></span>
     </div>
     <div class="nav-links">
       <a href="#suitsGrid"><i class="fas fa-shield-alt"></i> Trajes</a>
@@ -32,12 +32,12 @@
   <header class="header">
     <div class="header-content">
       <div class="logo-icon">🕷️</div>
-      <h1>SPIDER-MAN <span>ULTIMATE VAULT</span></h1>
-      <p class="subtitle">Base de datos táctica avanzada, visualizador 3D, simulador de combate y portafolio de ingeniería.</p>
+      <h1>MIGUEL PASPUEL <span>SPIDER-MANVERSE</span></h1>
+      <p class="subtitle">Base de datos táctica definitiva del multiverso, visualizador 3D, simulador de combate y portafolio de ingeniería.</p>
       <div class="header-badges">
         <span class="badge-tech"><i class="fas fa-code"></i> ISO/IEC 27001 Aligned</span>
-        <span class="badge-tech"><i class="fas fa-shield-alt"></i> Linux Hardened</span>
-        <span class="badge-tech"><i class="fas fa-cube"></i> Three.js WebGL</span>
+        <span class="badge-tech"><i class="fas fa-shield-alt"></i> Linux Hardened Architecture</span>
+        <span class="badge-tech"><i class="fas fa-cube"></i> Three.js WebGL Engine</span>
       </div>
     </div>
   </header>
@@ -45,15 +45,15 @@
   <!-- CONTENEDOR PRINCIPAL -->
   <main class="container">
     
-    <!-- CONTROLES, BÚSQUEDA Y FILTROS MASIVOS -->
+    <!-- CONTROLES, BÚSQUEDA Y FILTROS -->
     <section class="controls-card">
       <div class="search-box">
         <i class="fas fa-search"></i>
-        <input type="text" id="searchInput" placeholder="Buscar entre más de 15 trajes, habilidades o universos...">
+        <input type="text" id="searchInput" placeholder="Buscar entre trajes, universos, creadores o habilidades...">
       </div>
 
       <div class="filter-buttons" id="filterContainer">
-        <button class="filter-btn active" data-category="all">Todos (16)</button>
+        <button class="filter-btn active" data-category="all">Todos</button>
         <button class="filter-btn" data-category="clasico">Clásicos</button>
         <button class="filter-btn" data-category="tech">Tecnológicos</button>
         <button class="filter-btn" data-category="multiverso">Multiverso</button>
@@ -72,7 +72,7 @@
       </div>
     </section>
 
-    <!-- GALERÍA EXPANDIDA DE TRAJES -->
+    <!-- GALERÍA DE TRAJES -->
     <section class="suits-grid" id="suitsGrid"></section>
 
     <!-- VISUALIZADOR 3D INTERACTIVO DE ARMAS -->
@@ -99,7 +99,7 @@
       <div class="weapons-grid" id="weaponsGrid"></div>
     </section>
 
-    <!-- NUEVO: SIMULADOR DE COMBATE EN LA ARENA -->
+    <!-- SIMULADOR DE COMBATE EN LA ARENA -->
     <section class="arena-section" id="arena-section">
       <div class="section-title">
         <h2><i class="fas fa-gamepad"></i> Simulador de Combate Táctico</h2>
@@ -126,7 +126,7 @@
         </div>
 
         <div class="arena-log" id="arenaLog">
-          <p>⚡ Simulador listo. Selecciona una acción táctica para iniciar el combate...</p>
+          <p>⚡ Simulador listo bajo la arquitectura de Miguel Paspuel. Selecciona una acción táctica...</p>
         </div>
 
         <div class="arena-controls">
@@ -138,11 +138,11 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DE VIDEOS Y TRAILERS -->
+    <!-- SECCIÓN DE VIDEOS Y TRAILERS AMPLIADA -->
     <section class="videos-section" id="videos-section">
       <div class="section-title">
-        <h2><i class="fas fa-video"></i> Archivos Audiovisuales & Trailers</h2>
-        <p>Explora cinemáticas y avances oficiales del multiverso de Spider-Man</p>
+        <h2><i class="fas fa-video"></i> Archivos Audiovisuales & Trailers del Multiverso</h2>
+        <p>Explora cinemáticas y avances oficiales del universo cinematográfico y de videojuegos de Spider-Man</p>
       </div>
 
       <div class="videos-grid">
@@ -165,6 +165,26 @@
             <p>Demostración del traje simbionte y las habilidades de Peter y Miles.</p>
           </div>
         </div>
+
+        <div class="video-card">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/t06RUxPbp_c" title="Spider-Man: Into the Spider-Verse Trailer" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <h3>Into the Spider-Verse</h3>
+            <p>El inicio de la revolución visual que cambió el cine de animación.</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/nP6eocqhzUI" title="Spider-Man: No Way Home Trailer" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <h3>No Way Home - Multiverse Unite</h3>
+            <p>El encuentro histórico de los tres Spider-Man en la gran pantalla.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -184,9 +204,7 @@
       <div class="compare-grid" id="compareResults"></div>
     </section>
 
-    <!-- ================================================================= -->
     <!-- HOJA DE VIDA (CURRICULUM VITAE) DE MIGUEL PASPUEL -->
-    <!-- ================================================================= -->
     <section class="cv-section" id="cv-section">
       <div class="cv-header-card">
         <div class="cv-avatar">
@@ -194,7 +212,7 @@
         </div>
         <div class="cv-title-info">
           <h2>Miguel Alejandro Paspuel Villacrés</h2>
-          <p class="cv-role"><i class="fas fa-shield-alt"></i> Especialista en Ciberseguridad & Desarrollador de Software</p>
+          <p class="cv-role"><i class="fas fa-shield-alt"></i> Especialista en Ciberseguridad & Desarrollador Full-Stack</p>
           <p class="cv-location"><i class="fas fa-map-marker-alt"></i> Ecuador | Instituto Superior Tecnológico San Antonio (TESA)</p>
         </div>
         <div class="cv-actions">
@@ -203,11 +221,10 @@
       </div>
 
       <div class="cv-grid">
-        <!-- Columna Izquierda: Perfil y Educación -->
         <div class="cv-col">
           <div class="cv-card">
-            <h3><i class="fas id-card"></i> Perfil Profesional</h3>
-            <p>Estudiante de Ciberseguridad en la Escuela de Tecnologías de la Información y Comunicación de TESA, con sólida formación técnica previa como Bachiller en Electromecánica Automotriz. Apasionado por la implementación de marcos de gestión de seguridad de la información (ISO/IEC 27001, 27002, 27005), hardening de sistemas Linux, desarrollo en C/C++, Python, Bash y creación de arquitecturas web interactivas avanzadas.</p>
+            <h3><i class="fas fa-id-card"></i> Perfil Profesional</h3>
+            <p>Estudiante de Ciberseguridad en la Escuela de Tecnologías de la Información y Comunicación de TESA, con sólida formación técnica previa como Bachiller en Electromecánica Automotriz. Apasionado por la implementación de marcos de gestión de seguridad de la información (ISO/IEC 27001, 27002, 27005), hardening de sistemas Linux, desarrollo en C/C++, Python, Bash y creación de arquitecturas web interactivas avanzadas como este Spider-ManVerse.</p>
           </div>
 
           <div class="cv-card">
@@ -225,15 +242,8 @@
               </li>
             </ul>
           </div>
-
-          <div class="cv-card">
-            <h3><i class="fas fa-language"></i> Idiomas</h3>
-            <p><strong>Español:</strong> Nativo</p>
-            <p><strong>Inglés:</strong> Nivel Académico 2 (TESA)</p>
-          </div>
         </div>
 
-        <!-- Columna Derecha: Habilidades y Proyectos Clave -->
         <div class="cv-col">
           <div class="cv-card">
             <h3><i class="fas fa-tools"></i> Competencias Técnicas</h3>
@@ -259,12 +269,8 @@
                 <p>Implementación de un Sistema de Gestión de Seguridad de la Información alineado con ISO 27001.</p>
               </li>
               <li>
-                <strong>Matriz de Riesgos Automatizada</strong>
-                <p>Script en Python y Bash (`matriz_riesgos.sh`) basado en directrices ISO 27005.</p>
-              </li>
-              <li>
-                <strong>Spider-Man Vault 3D (Este Proyecto)</strong>
-                <p>Plataforma interactiva web con motor 3D Three.js, simulador de combate y gestión de estado avanzada.</p>
+                <strong>Spider-ManVerse Ultimate Vault</strong>
+                <p>Plataforma web de alto rendimiento con motor 3D Three.js, simulador interactivo y gestión multiversal.</p>
               </li>
             </ul>
           </div>
@@ -284,7 +290,7 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>&copy; 2026 Spider-Man Vault Ultimate | Creado con pasión por <strong>Miguel Alejandro Paspuel Villacrés</strong></p>
+    <p>&copy; 2026 Miguel Paspuel Spider-ManVerse Ultimate | Desarrollado con excelencia técnica</p>
   </footer>
 
   <script src="script.js"></script>
