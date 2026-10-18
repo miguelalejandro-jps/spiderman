@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SPIDER-MAN VAULT ULTIMATE - HOJA DE ESTILOS EXPANDIDA
+   MIGUEL PASPUEL SPIDER-MANVERSE - HOJA DE ESTILOS EXPANDIDA
    ========================================================================== */
 
 :root {
@@ -328,7 +328,7 @@ body {
   color: #ffffff;
 }
 
-/* SECCIÓN 3D DE ARMAS Y ARENA */
+/* SECCIONES 3D, ARENA, VIDEOS, CV */
 .weapons-section, .arena-section, .videos-section, .compare-section, .cv-section {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
@@ -364,9 +364,7 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-@media (max-width: 900px) {
-  .viewer-3d-card { grid-template-columns: 1fr; }
-}
+@media (max-width: 900px) { .viewer-3d-card { grid-template-columns: 1fr; } }
 
 .canvas-3d-wrapper {
   width: 100%;
@@ -582,7 +580,7 @@ body {
 /* VIDEOS GRID */
 .videos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
