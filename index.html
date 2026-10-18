@@ -3,27 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spider-Man Suits Vault</title>
+  <title>Spider-Man Vault - 3D Arsenal & Suits</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-<!-- TRES.JS Y ORBITCONTROLS PARA MODELADO 3D (AGREGAR EN EL <HEAD>) -->
+  
+  <!-- LIBRERÍAS THREE.JS Y ORBIT CONTROLS PARA EL 3D INTERACTIVO -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <!-- ENCABEZADO Y HERO SECTION -->
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
   <header class="header">
     <div class="logo-container">
       <div class="logo-icon">🕷️</div>
-      <h1>SPIDER-MAN <span>SUITS VAULT</span></h1>
+      <h1>SPIDER-MAN <span>VAULT 3D</span></h1>
     </div>
-    <p class="subtitle">Base de datos interactiva de los trajes más icónicos del Spider-Verse</p>
+    <p class="subtitle">Base de datos interactiva de trajes y arsenal 3D en GitHub Pages</p>
   </header>
 
   <!-- CONTENEDOR PRINCIPAL -->
   <main class="container">
     
-    <!-- BARRA DE CONTROLES: FILTROS Y BÚSQUEDA -->
+    <!-- CONTROLES, BÚSQUEDA Y FILTROS -->
     <section class="controls-card">
       <div class="search-box">
         <i class="fas fa-search"></i>
@@ -39,7 +41,7 @@
       </div>
 
       <div class="sort-box">
-        <label for="sortSelect">Ordenar por:</label>
+        <label for="sortSelect">Ordenar:</label>
         <select id="sortSelect">
           <option value="name">Nombre (A-Z)</option>
           <option value="tech">Nivel Tecnológico</option>
@@ -49,17 +51,15 @@
     </section>
 
     <!-- GALERÍA DE TRAJES -->
-    <section class="suits-grid" id="suitsGrid">
-      <!-- Los trajes se cargan dinámicamente con JavaScript -->
-    </section>
-<!-- NUEVO: VISUALIZADOR Y SELECTOR DE ARMAS 3D INTERACTIVO -->
+    <section class="suits-grid" id="suitsGrid"></section>
+
+    <!-- VISUALIZADOR 3D INTERACTIVO DE ARMAS -->
     <section class="weapons-section">
       <div class="section-title">
         <h2><i class="fas fa-cube"></i> Arsenal Táctico 3D Interactivo</h2>
-        <p>Haz clic y arrastra con el ratón para rotar el modelo 3D en 360°. Usa la rueda para hacer zoom.</p>
+        <p>Haz clic y arrastra con el ratón para rotar el modelo en 360°. Usa la rueda para hacer zoom.</p>
       </div>
 
-      <!-- VISUALIZADOR 3D -->
       <div class="viewer-3d-card">
         <div id="canvas3dContainer" class="canvas-3d-wrapper">
           <div class="drag-hint"><i class="fas fa-hand-pointer"></i> Arrastra para rotar en 3D</div>
@@ -74,14 +74,14 @@
         </div>
       </div>
 
-      <!-- TARJETAS DE SELECCIÓN DE ARMAS -->
       <div class="weapons-grid" id="weaponsGrid"></div>
     </section>
-    <!-- SECCIÓN DE COMPARADOR -->
+
+    <!-- COMPARADOR DE RENDIMIENTO -->
     <section class="compare-section">
-      <div class="section-header">
-        <h2><i class="fas fa-balance-scale"></i> Comparador de Trajes</h2>
-        <p>Selecciona dos trajes para comparar sus especificaciones tácticas</p>
+      <div class="section-title">
+        <h2><i class="fas fa-balance-scale"></i> Comparador de Rendimiento</h2>
+        <p>Enfrenta dos trajes con la bonificación del arma 3D equipada</p>
       </div>
 
       <div class="compare-controls">
@@ -90,9 +90,7 @@
         <select id="compareSuit2"></select>
       </div>
 
-      <div class="compare-grid" id="compareResults">
-        <!-- Resultados generados por JavaScript -->
-      </div>
+      <div class="compare-grid" id="compareResults"></div>
     </section>
 
   </main>
@@ -101,15 +99,13 @@
   <div class="modal" id="suitModal">
     <div class="modal-content">
       <button class="close-modal" id="closeModal">&times;</button>
-      <div class="modal-body" id="modalBody">
-        <!-- Contenido generado por JavaScript -->
-      </div>
+      <div id="modalBody"></div>
     </div>
   </div>
 
-  <!-- PIE DE PÁGINA -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <p>&copy; 2026 Spider-Man Suits Vault | Desarrollado para GitHub Pages</p>
+    <p>&copy; 2026 Spider-Man Vault 3D | Desarrollado para GitHub Pages</p>
   </footer>
 
   <script src="script.js"></script>
