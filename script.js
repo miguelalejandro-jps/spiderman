@@ -235,3 +235,220 @@ compare2.addEventListener('change', updateComparison);
 // INICIALIZACIÓN
 renderSuits(suitsData);
 populateCompareSelects();
+// ==========================================================================
+// AGREGADO: MOTOR 3D (THREE.JS), ARMAS E INTERACCIÓN CON RATÓN
+// ==========================================================================
+
+const weapons3DData = [
+  {
+    id: 'web-shooter-3d',
+    name: 'Lanzatelarañas Stark Mk-II',
+    icon: 'fa-bullseye',
+    type: 'wrist',
+    powerBoost: 12,
+    techBoost: 20,
+    desc: 'Brazalete con tecnología de nanopartículas para disparar cartuchos de telaraña sintética a alta presión.',
+    color: 0xe62429
+  },
+  {
+    id: 'spider-drone-3d',
+    name: 'Spider-Dron Táctico',
+    icon: 'fa-robot',
+    type: 'drone',
+    powerBoost: 18,
+    techBoost: 35,
+    desc: 'Unidad aérea autónoma de reconocimiento y distracción táctica con escáneres multiespectrales.',
+    color: 0x0055ff
+  },
+  {
+    id: 'iron-claw-3d',
+    name: 'Garra Mecánica de Titanio',
+    icon: 'fa-dharmachakra',
+    type: 'claw',
+    powerBoost: 35,
+    techBoost: 25,
+    desc: 'Extremidad robótica articulada de aleación de oro y titanio para combate pesado.',
+    color: 0xffd700
+  },
+  {
+    id: 'sonic-blaster-3d',
+    name: 'Emisor Sónico Anti-Simbiontes',
+    icon: 'fa-wave-square',
+    type: 'sonic',
+    powerBoost: 25,
+    techBoost: 30,
+    desc: 'Dispositivo generador de ondas de frecuencia modulada para neutralizar amenazas alienígenas.',
+    color: 0x00ffcc
+  }
+];
+
+let activeWeapon3D = weapons3DData[0];
+let scene3D, camera3D, renderer3D, controls3D;
+let current3DMesh = null;
+
+// INICIALIZACIÓN DEL ENTORNO 3D
+function init3DViewer() {
+  const container = document.getElementById('canvas3dContainer');
+  if (!container) return;
+
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+
+  // Escena
+  scene3D = new THREE.Scene();
+  scene3D.background = new THREE.Color(0x0f172a);
+
+  // Cámara
+  camera3D = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+  camera3D.position.set(0, 0, 8);
+
+  // Renderizador
+  renderer3D = new THREE.WebGLRenderer({ antialias: true });
+  renderer3D.setSize(width, height);
+  renderer3D.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer3D.domElement);
+
+  // OrbitControls para el movimiento con el ratón
+  controls3D = new THREE.OrbitControls(camera3D, renderer3D.domElement);
+  controls3D.enableDamping = true;
+  controls3D.dampingFactor = 0.05;
+  controls3D.enableZoom = true;
+  controls3D.minDistance = 3;
+  controls3D.maxDistance = 12;
+
+  // Luces
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+  scene3D.add(ambientLight);
+
+  const dirLight1 = new THREE.DirectionalLight(0xffffff, 1);
+  dirLight1.position.set(5, 10, 7);
+  scene3D.add(dirLight1);
+
+  const dirLight2 = new THREE.DirectionalLight(0xe62429, 0.8);
+  dirLight2.position.set(-5, -5, -5);
+  scene3D.add(dirLight2);
+
+  // Cargar primera arma
+  loadWeaponMesh(activeWeapon3D);
+
+  // Animación continua
+  function animate() {
+    requestAnimationFrame(animate);
+    controls3D.update();
+    if (current3DMesh) {
+      current3DMesh.rotation.y += 0.005; // Rotación automática continua
+    }
+    renderer3D.render(scene3D, camera3D);
+  }
+  animate();
+
+  // Ajustar tamaño al redimensionar pantalla
+  window.addEventListener('resize', () => {
+    if (!container) return;
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    camera3D.aspect = w / h;
+    camera3D.updateProjectionMatrix();
+    renderer3D.setSize(w, h);
+  });
+}
+
+// CONSTRUIR MODELO 3D SEGÚN EL ARMA SELECCIONADA
+function loadWeaponMesh(weapon) {
+  if (current3DMesh) scene3D.remove(current3DMesh);
+
+  const group = new THREE.Group();
+  const mainMat = new THREE.MeshStandardMaterial({ 
+    color: weapon.color, 
+    metalness: 0.8, 
+    roughness: 0.2 
+  });
+  const darkMat = new THREE.MeshStandardMaterial({ 
+    color: 0x334155, 
+    metalness: 0.5, 
+    roughness: 0.5 
+  });
+
+  if (weapon.type === 'wrist') {
+    const baseGeo = new THREE.CylinderGeometry(1.2, 1.2, 2, 16);
+    const base = new THREE.Mesh(baseGeo, darkMat);
+    base.rotation.z = Math.PI / 2;
+    group.add(base);
+
+    const nozzleGeo = new THREE.CylinderGeometry(0.3, 0.4, 1.2, 12);
+    const nozzle = new THREE.Mesh(nozzleGeo, mainMat);
+    nozzle.position.set(0, 1.2, 0);
+    group.add(nozzle);
+  } else if (weapon.type === 'drone') {
+    const bodyGeo = new THREE.SphereGeometry(1, 16, 16);
+    const body = new THREE.Mesh(bodyGeo, mainMat);
+    group.add(body);
+
+    for (let i = 0; i < 4; i++) {
+      const armGeo = new THREE.BoxGeometry(0.2, 0.2, 2.2);
+      const arm = new THREE.Mesh(armGeo, darkMat);
+      arm.rotation.y = (Math.PI / 2) * i;
+      group.add(arm);
+    }
+  } else if (weapon.type === 'claw') {
+    const baseGeo = new THREE.BoxGeometry(1, 2, 1);
+    const base = new THREE.Mesh(baseGeo, darkMat);
+    group.add(base);
+
+    const clawGeo = new THREE.TorusGeometry(1.5, 0.2, 8, 20, Math.PI / 2);
+    const claw = new THREE.Mesh(clawGeo, mainMat);
+    claw.position.set(0, 1, 0);
+    group.add(claw);
+  } else {
+    const coneGeo = new THREE.ConeGeometry(1.5, 2.5, 16);
+    const cone = new THREE.Mesh(coneGeo, mainMat);
+    cone.rotation.x = Math.PI;
+    group.add(cone);
+  }
+
+  current3DMesh = group;
+  scene3D.add(current3DMesh);
+}
+
+// CAMBIAR ARMA 3D SELECCIONADA
+function selectWeapon3D(weapon) {
+  activeWeapon3D = weapon;
+  loadWeaponMesh(weapon);
+
+  document.getElementById('w3dTitle').textContent = weapon.name;
+  document.getElementById('w3dDesc').textContent = weapon.desc;
+  document.getElementById('w3dBoosts').innerHTML = `
+    <span class="boost-badge power">+${weapon.powerBoost}% Fuerza</span>
+    <span class="boost-badge tech">+${weapon.techBoost}% Tecnología</span>
+  `;
+
+  document.querySelectorAll('.weapon-card').forEach(card => {
+    card.classList.toggle('selected', card.dataset.id === weapon.id);
+  });
+}
+
+// RENDERIZAR BOTONES DE SELECCIÓN DE ARMAS
+function renderWeaponsGrid() {
+  const grid = document.getElementById('weaponsGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  weapons3DData.forEach(w => {
+    const card = document.createElement('div');
+    card.className = `weapon-card ${w.id === activeWeapon3D.id ? 'selected' : ''}`;
+    card.dataset.id = w.id;
+    card.innerHTML = `
+      <i class="fas ${w.icon}"></i>
+      <h4>${w.name}</h4>
+      <span>+${w.powerBoost}% PWR / +${w.techBoost}% TECH</span>
+    `;
+    card.addEventListener('click', () => selectWeapon3D(w));
+    grid.appendChild(card);
+  });
+}
+
+// INICIALIZAR EL MÓDULO 3D AL CORTAR LA PÁGINA
+window.addEventListener('DOMContentLoaded', () => {
+  renderWeaponsGrid();
+  init3DViewer();
+});
