@@ -504,3 +504,23 @@ const suitsData = [
     image: 'img/spider-2099.jpg'
   }
 ];
+function renderSuits(data) {
+  const suitsGrid = document.getElementById('suitsGrid');
+  suitsGrid.innerHTML = '';
+  data.forEach(suit => {
+    const card = document.createElement('div');
+    card.className = 'suit-card';
+    card.innerHTML = `
+      <div class="card-img-container">
+        <img src="${suit.image}" alt="${suit.name}" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div class="card-content">
+        <span class="badge">${suit.category}</span>
+        <h3>${suit.name}</h3>
+        <p>${suit.description}</p>
+        <button class="btn-details" onclick="openSuitModal('${suit.id}')"><i class="fas fa-search-plus"></i> Ver Detalles</button>
+      </div>
+    `;
+    suitsGrid.appendChild(card);
+  });
+}
