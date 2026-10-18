@@ -1,43 +1,64 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spider-Man Vault - 3D Arsenal & Suits</title>
+  <title>Spider-Man Vault Ultimate Edition | By Miguel Paspuel</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- LIBRERÍAS THREE.JS Y ORBIT CONTROLS PARA EL 3D INTERACTIVO -->
+  <!-- LIBRERÍAS THREE.JS Y ORBIT CONTROLS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
 <body>
 
-  <!-- ENCABEZADO -->
-  <header class="header">
-    <div class="logo-container">
-      <div class="logo-icon">🕷️</div>
-      <h1>SPIDER-MAN <span>VAULT 3D</span></h1>
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <i class="fas fa-spider"></i>
+      <span>SPIDER-VERSE VAULT <small>v5.0 Ultimate</small></span>
     </div>
-    <p class="subtitle">Base de datos interactiva de trajes y arsenal 3D en GitHub Pages</p>
+    <div class="nav-links">
+      <a href="#suitsGrid"><i class="fas fa-shield-alt"></i> Trajes</a>
+      <a href="#weapons-section"><i class="fas fa-cube"></i> Arsenal 3D</a>
+      <a href="#arena-section"><i class="fas fa-gamepad"></i> Arena Sim</a>
+      <a href="#videos-section"><i class="fas fa-video"></i> Multimedia</a>
+      <a href="#cv-section" class="highlight-cv"><i class="fas fa-user-tie"></i> Creador (CV)</a>
+    </div>
+  </nav>
+
+  <!-- ENCABEZADO HERO -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo-icon">🕷️</div>
+      <h1>SPIDER-MAN <span>ULTIMATE VAULT</span></h1>
+      <p class="subtitle">Base de datos táctica avanzada, visualizador 3D, simulador de combate y portafolio de ingeniería.</p>
+      <div class="header-badges">
+        <span class="badge-tech"><i class="fas fa-code"></i> ISO/IEC 27001 Aligned</span>
+        <span class="badge-tech"><i class="fas fa-shield-alt"></i> Linux Hardened</span>
+        <span class="badge-tech"><i class="fas fa-cube"></i> Three.js WebGL</span>
+      </div>
+    </div>
   </header>
 
   <!-- CONTENEDOR PRINCIPAL -->
   <main class="container">
     
-    <!-- CONTROLES, BÚSQUEDA Y FILTROS -->
+    <!-- CONTROLES, BÚSQUEDA Y FILTROS MASIVOS -->
     <section class="controls-card">
       <div class="search-box">
         <i class="fas fa-search"></i>
-        <input type="text" id="searchInput" placeholder="Buscar traje, creador o habilidad...">
+        <input type="text" id="searchInput" placeholder="Buscar entre más de 15 trajes, habilidades o universos...">
       </div>
 
       <div class="filter-buttons" id="filterContainer">
-        <button class="filter-btn active" data-category="all">Todos</button>
+        <button class="filter-btn active" data-category="all">Todos (16)</button>
         <button class="filter-btn" data-category="clasico">Clásicos</button>
         <button class="filter-btn" data-category="tech">Tecnológicos</button>
         <button class="filter-btn" data-category="multiverso">Multiverso</button>
         <button class="filter-btn" data-category="simbionte">Simbiontes</button>
+        <button class="filter-btn" data-category="armored">Blindados</button>
       </div>
 
       <div class="sort-box">
@@ -46,18 +67,19 @@
           <option value="name">Nombre (A-Z)</option>
           <option value="tech">Nivel Tecnológico</option>
           <option value="power">Nivel de Fuerza</option>
+          <option value="agility">Agilidad</option>
         </select>
       </div>
     </section>
 
-    <!-- GALERÍA DE TRAJES -->
+    <!-- GALERÍA EXPANDIDA DE TRAJES -->
     <section class="suits-grid" id="suitsGrid"></section>
 
     <!-- VISUALIZADOR 3D INTERACTIVO DE ARMAS -->
-    <section class="weapons-section">
+    <section class="weapons-section" id="weapons-section">
       <div class="section-title">
         <h2><i class="fas fa-cube"></i> Arsenal Táctico 3D Interactivo</h2>
-        <p>Haz clic y arrastra con el ratón para rotar el modelo en 360°. Usa la rueda para hacer zoom.</p>
+        <p>Haz clic y arrastra con el ratón para rotar el modelo en 360°. Rueda del ratón para hacer zoom.</p>
       </div>
 
       <div class="viewer-3d-card">
@@ -77,6 +99,75 @@
       <div class="weapons-grid" id="weaponsGrid"></div>
     </section>
 
+    <!-- NUEVO: SIMULADOR DE COMBATE EN LA ARENA -->
+    <section class="arena-section" id="arena-section">
+      <div class="section-title">
+        <h2><i class="fas fa-gamepad"></i> Simulador de Combate Táctico</h2>
+        <p>Pon a prueba tu traje y arma seleccionados contra villanos emblemáticos del Spider-Verse.</p>
+      </div>
+      
+      <div class="arena-card">
+        <div class="arena-fighters">
+          <div class="fighter-box hero-fighter">
+            <h3 id="arenaHeroName">Traje Clásico</h3>
+            <div class="fighter-stats">
+              <span>HP: <strong id="heroHp">100</strong></span>
+              <div class="hp-bar"><div id="heroHpFill" style="width: 100%;"></div></div>
+            </div>
+          </div>
+          <div class="vs-arena">VS</div>
+          <div class="fighter-box villain-fighter">
+            <h3 id="villainName">Duende Verde (Green Goblin)</h3>
+            <div class="fighter-stats">
+              <span>HP: <strong id="villainHp">120</strong></span>
+              <div class="hp-bar"><div id="villainHpFill" style="width: 100%; background: #e62429;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="arena-log" id="arenaLog">
+          <p>⚡ Simulador listo. Selecciona una acción táctica para iniciar el combate...</p>
+        </div>
+
+        <div class="arena-controls">
+          <button class="arena-btn" onclick="arenaAction('attack')"><i class="fas fa-fist-raised"></i> Ataque Rápido</button>
+          <button class="arena-btn" onclick="arenaAction('special')"><i class="fas fa-bolt"></i> Ataque Especial (Gadget)</button>
+          <button class="arena-btn" onclick="arenaAction('heal')"><i class="fas fa-medkit"></i> Protocolo de Nanoreparación</button>
+          <button class="arena-btn reset" onclick="resetArena()"><i class="fas fa-redo"></i> Reiniciar Combate</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE VIDEOS Y TRAILERS -->
+    <section class="videos-section" id="videos-section">
+      <div class="section-title">
+        <h2><i class="fas fa-video"></i> Archivos Audiovisuales & Trailers</h2>
+        <p>Explora cinemáticas y avances oficiales del multiverso de Spider-Man</p>
+      </div>
+
+      <div class="videos-grid">
+        <div class="video-card">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/JfVOs4VSpmA" title="Spider-Man: Across the Spider-Verse Trailer" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <h3>Across the Spider-Verse</h3>
+            <p>Tráiler oficial de la épica aventura multiversal de Miles Morales.</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/ZYzbalQ6L88" title="Marvel's Spider-Man 2 Gameplay" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <h3>Spider-Man 2 (Insomniac)</h3>
+            <p>Demostración del traje simbionte y las habilidades de Peter y Miles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- COMPARADOR DE RENDIMIENTO -->
     <section class="compare-section">
       <div class="section-title">
@@ -93,6 +184,94 @@
       <div class="compare-grid" id="compareResults"></div>
     </section>
 
+    <!-- ================================================================= -->
+    <!-- HOJA DE VIDA (CURRICULUM VITAE) DE MIGUEL PASPUEL -->
+    <!-- ================================================================= -->
+    <section class="cv-section" id="cv-section">
+      <div class="cv-header-card">
+        <div class="cv-avatar">
+          <i class="fas fa-user-shield"></i>
+        </div>
+        <div class="cv-title-info">
+          <h2>Miguel Alejandro Paspuel Villacrés</h2>
+          <p class="cv-role"><i class="fas fa-shield-alt"></i> Especialista en Ciberseguridad & Desarrollador de Software</p>
+          <p class="cv-location"><i class="fas fa-map-marker-alt"></i> Ecuador | Instituto Superior Tecnológico San Antonio (TESA)</p>
+        </div>
+        <div class="cv-actions">
+          <button class="btn-download-cv" onclick="window.print()"><i class="fas fa-file-pdf"></i> Exportar CV (PDF)</button>
+        </div>
+      </div>
+
+      <div class="cv-grid">
+        <!-- Columna Izquierda: Perfil y Educación -->
+        <div class="cv-col">
+          <div class="cv-card">
+            <h3><i class="fas id-card"></i> Perfil Profesional</h3>
+            <p>Estudiante de Ciberseguridad en la Escuela de Tecnologías de la Información y Comunicación de TESA, con sólida formación técnica previa como Bachiller en Electromecánica Automotriz. Apasionado por la implementación de marcos de gestión de seguridad de la información (ISO/IEC 27001, 27002, 27005), hardening de sistemas Linux, desarrollo en C/C++, Python, Bash y creación de arquitecturas web interactivas avanzadas.</p>
+          </div>
+
+          <div class="cv-card">
+            <h3><i class="fas fa-graduation-cap"></i> Educación & Formación</h3>
+            <ul class="cv-timeline">
+              <li>
+                <strong>Tecnología Superior en Ciberseguridad</strong>
+                <span>Instituto Superior Tecnológico San Antonio (TESA), Ecuador | 2026 - Presente</span>
+                <p>Enfoque en gestión de riesgos, auditoría de sistemas, criptografía y redes.</p>
+              </li>
+              <li>
+                <strong>Bachillerato en Electromecánica Automotriz</strong>
+                <span>Ecuador</span>
+                <p>Formación técnica especializada en sistemas electromecánicos y diagnóstico.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-card">
+            <h3><i class="fas fa-language"></i> Idiomas</h3>
+            <p><strong>Español:</strong> Nativo</p>
+            <p><strong>Inglés:</strong> Nivel Académico 2 (TESA)</p>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Habilidades y Proyectos Clave -->
+        <div class="cv-col">
+          <div class="cv-card">
+            <h3><i class="fas fa-tools"></i> Competencias Técnicas</h3>
+            <div class="skills-tags">
+              <span>C / C++</span>
+              <span>Python & Bash</span>
+              <span>ISO/IEC 27001:2022</span>
+              <span>ISO/IEC 27005:2022</span>
+              <span>Linux (Ubuntu / Hardening)</span>
+              <span>UFW, Fail2ban, auditd</span>
+              <span>Nmap & OpenSCAP</span>
+              <span>Git, GitHub CLI</span>
+              <span>VMware Workstation</span>
+              <span>Three.js / JavaScript</span>
+            </div>
+          </div>
+
+          <div class="cv-card">
+            <h3><i class="fas fa-project-diagram"></i> Proyectos Destacados</h3>
+            <ul class="cv-projects-list">
+              <li>
+                <strong>Corporation Capsule SGSI</strong>
+                <p>Implementación de un Sistema de Gestión de Seguridad de la Información alineado con ISO 27001.</p>
+              </li>
+              <li>
+                <strong>Matriz de Riesgos Automatizada</strong>
+                <p>Script en Python y Bash (`matriz_riesgos.sh`) basado en directrices ISO 27005.</p>
+              </li>
+              <li>
+                <strong>Spider-Man Vault 3D (Este Proyecto)</strong>
+                <p>Plataforma interactiva web con motor 3D Three.js, simulador de combate y gestión de estado avanzada.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- MODAL DE DETALLES -->
@@ -105,7 +284,7 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>&copy; 2026 Spider-Man Vault 3D | Desarrollado para GitHub Pages</p>
+    <p>&copy; 2026 Spider-Man Vault Ultimate | Creado con pasión por <strong>Miguel Alejandro Paspuel Villacrés</strong></p>
   </footer>
 
   <script src="script.js"></script>
