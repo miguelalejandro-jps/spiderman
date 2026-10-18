@@ -1,5 +1,5 @@
 // ==========================================================================
-// BASE DE DATOS MASIVA DE TRAJES (16 TRAJES OFICIALES DEL SPIDER-VERSE)
+// BASE DE DATOS DE TRAJES (16 TRAJES OFICIALES DEL SPIDER-VERSE)
 // ==========================================================================
 const suitsData = [
   {
@@ -159,7 +159,7 @@ const suitsData = [
     creator: 'Doctor Octopus (Otto Octavius)',
     firstApp: 'The Superior Spider-Man #1 (2013)',
     description: 'Diseño letal y tecnológico con extremidades mecánicas traseras estilo arácnido.',
-    power: 96, expr: 98, tech: 99, stealth: 82, agility: 93,
+    power: 96, tech: 99, stealth: 82, agility: 93,
     image: 'img/superior-spider.jpg'
   }
 ];
@@ -420,7 +420,7 @@ function arenaAction(action) {
     heroHp = Math.max(0, heroHp - villainDmg);
     log.innerHTML += `<br>💥 Duende Verde contraataca e inflige ${villainDmg} de daño.`;
   } else {
-    log.innerHTML += `<br>🏆 ¡Victoria! Has derrotado al Duende Verde en el Multiverso.`;
+    log.innerHTML += `<br>🏆 ¡Victoria en el Spider-ManVerse de Miguel Paspuel! Has derrotado al Duende Verde.`;
   }
 
   heroHpText.textContent = heroHp;
@@ -437,7 +437,7 @@ function resetArena() {
   document.getElementById('heroHpFill').style.width = `100%`;
   document.getElementById('villainHp').textContent = villainHp;
   document.getElementById('villainHpFill').style.width = `100%`;
-  document.getElementById('arenaLog').innerHTML = `<p>⚡ Arena reiniciada. Selecciona una acción táctica...</p>`;
+  document.getElementById('arenaLog').innerHTML = `<p>⚡ Arena reiniciada bajo supervisión de Miguel Paspuel. Selecciona una acción táctica...</p>`;
 }
 
 // ==========================================================================
@@ -468,7 +468,6 @@ function updateComparison() {
   const p2 = Math.min(100, s2.power + activeWeapon3D.powerBoost);
   const t2 = Math.min(100, (s2.tech || 50) + activeWeapon3D.techBoost);
 
-  // Actualizar nombre en arena
   document.getElementById('arenaHeroName').textContent = s1.name;
 
   results.innerHTML = `
