@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
+<!-- TRES.JS Y ORBITCONTROLS PARA MODELADO 3D (AGREGAR EN EL <HEAD>) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <!-- ENCABEZADO Y HERO SECTION -->
   <header class="header">
     <div class="logo-container">
@@ -50,7 +52,31 @@
     <section class="suits-grid" id="suitsGrid">
       <!-- Los trajes se cargan dinámicamente con JavaScript -->
     </section>
+<!-- NUEVO: VISUALIZADOR Y SELECTOR DE ARMAS 3D INTERACTIVO -->
+    <section class="weapons-section">
+      <div class="section-title">
+        <h2><i class="fas fa-cube"></i> Arsenal Táctico 3D Interactivo</h2>
+        <p>Haz clic y arrastra con el ratón para rotar el modelo 3D en 360°. Usa la rueda para hacer zoom.</p>
+      </div>
 
+      <!-- VISUALIZADOR 3D -->
+      <div class="viewer-3d-card">
+        <div id="canvas3dContainer" class="canvas-3d-wrapper">
+          <div class="drag-hint"><i class="fas fa-hand-pointer"></i> Arrastra para rotar en 3D</div>
+        </div>
+        <div class="weapon-info-panel">
+          <h3 id="w3dTitle">Lanzatelarañas Stark Mk-II</h3>
+          <p id="w3dDesc">Selecciona un dispositivo para interactuar con él en 3D y analizar sus estadísticas tácticas.</p>
+          <div class="stats-boost" id="w3dBoosts">
+            <span class="boost-badge power">+12% Fuerza</span>
+            <span class="boost-badge tech">+20% Tecnología</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TARJETAS DE SELECCIÓN DE ARMAS -->
+      <div class="weapons-grid" id="weaponsGrid"></div>
+    </section>
     <!-- SECCIÓN DE COMPARADOR -->
     <section class="compare-section">
       <div class="section-header">
