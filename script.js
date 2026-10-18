@@ -1,5 +1,5 @@
 // ==========================================================================
-// BASE DE DATOS DE TRAJES (APUNTANDO A LA CARPETA img/)
+// BASE DE DATOS MASIVA DE TRAJES (16 TRAJES OFICIALES DEL SPIDER-VERSE)
 // ==========================================================================
 const suitsData = [
   {
@@ -51,6 +51,116 @@ const suitsData = [
     description: 'Fabricado con moléculas inestables, garra retráctil y alas de telaraña para planear.',
     power: 88, tech: 92, stealth: 60, agility: 94,
     image: 'img/spider-2099.jpg'
+  },
+  {
+    id: 'noir',
+    name: 'Spider-Man Noir',
+    category: 'multiverso',
+    creator: 'Peter Parker (Earth-90214)',
+    firstApp: 'Spider-Man Noir #1 (2009)',
+    description: 'Inspirado en los años 30, gabardina oscura y revólveres para combate táctico en las sombras.',
+    power: 75, tech: 30, stealth: 99, agility: 80,
+    image: 'img/noir-suit.jpg'
+  },
+  {
+    id: 'punk',
+    name: 'Spider-Punk (Hobie Brown)',
+    category: 'multiverso',
+    creator: 'Hobie Brown',
+    firstApp: 'The Amazing Spider-Man Vol. 3 #10 (2015)',
+    description: 'Chaleco de mezclilla con tachuelas, guitarra eléctrica amplificada y actitud anarquista.',
+    power: 80, tech: 45, stealth: 50, agility: 92,
+    image: 'img/spider-punk.jpg'
+  },
+  {
+    id: 'stark-tech',
+    name: 'Upgraded Suit (Far From Home)',
+    category: 'tech',
+    creator: 'Peter Parker & Tony Stark',
+    firstApp: 'Spider-Man: Far From Home (2019)',
+    description: 'Diseño rojo y negro con sistemas de drones teledirigidos y paracaídas integrado.',
+    power: 85, tech: 95, stealth: 70, agility: 90,
+    image: 'img/stark-tech.jpg'
+  },
+  {
+    id: 'advanced-insomniac',
+    name: 'Advanced Suit (PS4/PS5)',
+    category: 'tech',
+    creator: 'Peter Parker & Otto Octavius',
+    firstApp: 'Marvel\'s Spider-Man (2018)',
+    description: 'El emblemático traje con la araña blanca gigante y placas de fibra de carbono flexibles.',
+    power: 88, tech: 90, stealth: 75, agility: 95,
+    image: 'img/advanced-suit.jpg'
+  },
+  {
+    id: 'armor-mk4',
+    name: 'Spider-Armor MK IV',
+    category: 'armored',
+    creator: 'Parker Industries',
+    firstApp: 'The Amazing Spider-Man Vol. 4 #1 (2015)',
+    description: 'Construido con aleación de metal líquido y campos de fuerza defensivos impenetrables.',
+    power: 94, tech: 96, stealth: 60, agility: 85,
+    image: 'img/armor-mk4.jpg'
+  },
+  {
+    id: 'future-foundation',
+    name: 'Future Foundation Suit',
+    category: 'tech',
+    creator: 'Reed Richards',
+    firstApp: 'FF #1 (2011)',
+    description: 'Traje blanco y negro fabricado con moléculas inestables autolimpiables.',
+    power: 82, tech: 95, stealth: 80, agility: 91,
+    image: 'img/future-foundation.jpg'
+  },
+  {
+    id: 'bombastic-bag',
+    name: 'Bombastic Bag-Man',
+    category: 'clasico',
+    creator: 'Los Cuatro Fantásticos',
+    firstApp: 'The Amazing Spider-Man #258 (1984)',
+    description: 'Un traje improvisado con ropa de los 4 Fantásticos y una bolsa de papel en la cabeza.',
+    power: 60, tech: 10, stealth: 20, agility: 75,
+    image: 'img/bag-man.jpg'
+  },
+  {
+    id: 'last-stand',
+    name: 'Last Stand Suit',
+    category: 'multiverso',
+    creator: 'Peter Parker (Earth-31120)',
+    firstApp: 'The Amazing Spider-Man #500 (2003)',
+    description: 'Chaqueta de cuero roja y negra de un futuro alternativo y sombrío.',
+    power: 78, tech: 25, stealth: 70, agility: 88,
+    image: 'img/last-stand.jpg'
+  },
+  {
+    id: 'scarlet-spider',
+    name: 'Scarlet Spider (Ben Reilly)',
+    category: 'clasico',
+    creator: 'Ben Reilly',
+    firstApp: 'Web of Spider-Man #118 (1994)',
+    description: 'Sudadera sin mangas azul con el símbolo de la araña sobre el traje clásico.',
+    power: 76, tech: 35, stealth: 60, agility: 92,
+    image: 'img/scarlet-spider.jpg'
+  },
+  {
+    id: 'cosmic-spider',
+    name: 'Captain Universe (Cosmic Spider)',
+    category: 'multiverso',
+    creator: 'Unipoder Cósmico',
+    firstApp: 'The Spectacular Spider-Man #158 (1989)',
+    description: 'Imbuido con la Fuerza Enigma, otorgando poderes cercanos a la omnipotencia.',
+    power: 100, tech: 100, stealth: 100, agility: 100,
+    image: 'img/cosmic-spider.jpg'
+  },
+  {
+    id: 'superior-spider',
+    name: 'Superior Spider-Man',
+    category: 'tech',
+    creator: 'Doctor Octopus (Otto Octavius)',
+    firstApp: 'The Superior Spider-Man #1 (2013)',
+    description: 'Diseño letal y tecnológico con extremidades mecánicas traseras estilo arácnido.',
+    power: 96, expr: 98, tech: 99, stealth: 82, agility: 93,
+    image: 'img/superior-spider.jpg'
   }
 ];
 
@@ -254,8 +364,9 @@ function filterData() {
 
   filtered.sort((a, b) => {
     if (sortBy === 'name') return a.name.localeCompare(b.name);
-    if (sortBy === 'tech') return b.tech - a.tech;
+    if (sortBy === 'tech') return (b.tech || 50) - (a.tech || 50);
     if (sortBy === 'power') return b.power - a.power;
+    if (sortBy === 'agility') return b.agility - a.agility;
   });
 
   renderSuits(filtered);
@@ -271,6 +382,63 @@ filterBtns.forEach(btn => {
 
 searchInput.addEventListener('input', filterData);
 sortSelect.addEventListener('change', filterData);
+
+// ==========================================================================
+// SIMULADOR DE COMBATE EN LA ARENA
+// ==========================================================================
+let heroHp = 100;
+let villainHp = 120;
+
+function arenaAction(action) {
+  const log = document.getElementById('arenaLog');
+  const heroHpFill = document.getElementById('heroHpFill');
+  const villainHpFill = document.getElementById('villainHpFill');
+  const heroHpText = document.getElementById('heroHp');
+  const villainHpText = document.getElementById('villainHp');
+
+  if (heroHp <= 0 || villainHp <= 0) {
+    log.innerHTML += `<br>⚠️ El combate ha finalizado. Por favor, reinicia la arena.`;
+    return;
+  }
+
+  let heroDmg = 15 + Math.floor(Math.random() * 10);
+  let villainDmg = 12 + Math.floor(Math.random() * 12);
+
+  if (action === 'special') {
+    heroDmg += activeWeapon3D.powerBoost;
+    log.innerHTML += `<br>⚡ ¡Uso de ${activeWeapon3D.name}! Impacto crítico de ${heroDmg} de daño.`;
+  } else if (action === 'heal') {
+    heroHp = Math.min(100, heroHp + 25);
+    log.innerHTML += `<br>💉 Protocolo de nanoreparación activado. +25 HP recuperados.`;
+  } else {
+    log.innerHTML += `<br>⚔️ Ataque rápido ejecutado. Infliges ${heroDmg} de daño.`;
+  }
+
+  villainHp = Math.max(0, villainHp - heroDmg);
+  
+  if (villainHp > 0) {
+    heroHp = Math.max(0, heroHp - villainDmg);
+    log.innerHTML += `<br>💥 Duende Verde contraataca e inflige ${villainDmg} de daño.`;
+  } else {
+    log.innerHTML += `<br>🏆 ¡Victoria! Has derrotado al Duende Verde en el Multiverso.`;
+  }
+
+  heroHpText.textContent = heroHp;
+  heroHpFill.style.width = `${heroHp}%`;
+  villainHpText.textContent = villainHp;
+  villainHpFill.style.width = `${(villainHp/120)*100}%`;
+  log.scrollTop = log.scrollHeight;
+}
+
+function resetArena() {
+  heroHp = 100;
+  villainHp = 120;
+  document.getElementById('heroHp').textContent = heroHp;
+  document.getElementById('heroHpFill').style.width = `100%`;
+  document.getElementById('villainHp').textContent = villainHp;
+  document.getElementById('villainHpFill').style.width = `100%`;
+  document.getElementById('arenaLog').innerHTML = `<p>⚡ Arena reiniciada. Selecciona una acción táctica...</p>`;
+}
 
 // ==========================================================================
 // COMPARADOR Y MODAL
@@ -296,22 +464,25 @@ function updateComparison() {
   const results = document.getElementById('compareResults');
 
   const p1 = Math.min(100, s1.power + activeWeapon3D.powerBoost);
-  const t1 = Math.min(100, s1.tech + activeWeapon3D.techBoost);
+  const t1 = Math.min(100, (s1.tech || 50) + activeWeapon3D.techBoost);
   const p2 = Math.min(100, s2.power + activeWeapon3D.powerBoost);
-  const t2 = Math.min(100, s2.tech + activeWeapon3D.techBoost);
+  const t2 = Math.min(100, (s2.tech || 50) + activeWeapon3D.techBoost);
+
+  // Actualizar nombre en arena
+  document.getElementById('arenaHeroName').textContent = s1.name;
 
   results.innerHTML = `
     <div class="compare-col">
       <h3>${s1.name}</h3>
       ${createStatBar('Fuerza Total', p1)}
       ${createStatBar('Tecnología Total', t1)}
-      ${createStatBar('Agilidad Base', s1.agility)}
+      ${createStatBar('Agilidad Base', s1.agility || 85)}
     </div>
     <div class="compare-col">
       <h3>${s2.name}</h3>
       ${createStatBar('Fuerza Total', p2)}
       ${createStatBar('Tecnología Total', t2)}
-      ${createStatBar('Agilidad Base', s2.agility)}
+      ${createStatBar('Agilidad Base', s2.agility || 85)}
     </div>
   `;
 }
@@ -336,8 +507,8 @@ window.openSuitModal = function(id) {
     <p><strong>Primera Aparición:</strong> ${suit.firstApp}</p>
     <p style="margin: 1rem 0;">${suit.description}</p>
     ${createStatBar('Fuerza', suit.power)}
-    ${createStatBar('Tecnología', suit.tech)}
-    ${createStatBar('Agilidad', suit.agility)}
+    ${createStatBar('Tecnología', suit.tech || 60)}
+    ${createStatBar('Agilidad', suit.agility || 85)}
   `;
   modal.classList.add('active');
 };
