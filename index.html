@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spider-Man Suits Vault</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
+  <!-- ENCABEZADO Y HERO SECTION -->
+  <header class="header">
+    <div class="logo-container">
+      <div class="logo-icon">🕷️</div>
+      <h1>SPIDER-MAN <span>SUITS VAULT</span></h1>
+    </div>
+    <p class="subtitle">Base de datos interactiva de los trajes más icónicos del Spider-Verse</p>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="container">
+    
+    <!-- BARRA DE CONTROLES: FILTROS Y BÚSQUEDA -->
+    <section class="controls-card">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Buscar traje, creador o habilidad...">
+      </div>
+
+      <div class="filter-buttons" id="filterContainer">
+        <button class="filter-btn active" data-category="all">Todos</button>
+        <button class="filter-btn" data-category="clasico">Clásicos</button>
+        <button class="filter-btn" data-category="tech">Tecnológicos</button>
+        <button class="filter-btn" data-category="multiverso">Multiverso</button>
+        <button class="filter-btn" data-category="simbionte">Simbiontes</button>
+      </div>
+
+      <div class="sort-box">
+        <label for="sortSelect">Ordenar por:</label>
+        <select id="sortSelect">
+          <option value="name">Nombre (A-Z)</option>
+          <option value="tech">Nivel Tecnológico</option>
+          <option value="power">Nivel de Fuerza</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- GALERÍA DE TRAJES -->
+    <section class="suits-grid" id="suitsGrid">
+      <!-- Los trajes se cargan dinámicamente con JavaScript -->
+    </section>
+
+    <!-- SECCIÓN DE COMPARADOR -->
+    <section class="compare-section">
+      <div class="section-header">
+        <h2><i class="fas fa-balance-scale"></i> Comparador de Trajes</h2>
+        <p>Selecciona dos trajes para comparar sus especificaciones tácticas</p>
+      </div>
+
+      <div class="compare-controls">
+        <select id="compareSuit1"></select>
+        <span class="vs-badge">VS</span>
+        <select id="compareSuit2"></select>
+      </div>
+
+      <div class="compare-grid" id="compareResults">
+        <!-- Resultados generados por JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE DETALLES -->
+  <div class="modal" id="suitModal">
+    <div class="modal-content">
+      <button class="close-modal" id="closeModal">&times;</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Contenido generado por JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="footer">
+    <p>&copy; 2026 Spider-Man Suits Vault | Desarrollado para GitHub Pages</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
